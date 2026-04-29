@@ -1,0 +1,14 @@
+# Microsoft Office documents and temporary lock files
+*.doc
+*.docx
+*.docm
+*.dot
+*.dotx
+*.ppt
+*.pptx
+*.pptm
+*.pot
+*.potx
+*.pps
+*.ppsx
+~$*

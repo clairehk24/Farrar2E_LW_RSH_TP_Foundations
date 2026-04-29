@@ -1,0 +1,851 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Well Reproductive and Sexual Health, Second Edition - Teacher Pack</title>
+    <style>
+      :root {
+        --brand-pink: #a71b4c;
+        --brand-pink-dark: #8f1741;
+        --brand-blue: #0096c7;
+        --sidebar-bg: #f5f7f9;
+        --page-bg: #eef2f5;
+        --surface: #ffffff;
+        --surface-soft: #fafbfd;
+        --text: rgba(0, 0, 0, 0.84);
+        --muted: rgba(0, 0, 0, 0.62);
+        --border: #e6ecf1;
+        --border-strong: #d7e0e8;
+        --shadow: 0 8px 24px rgba(29, 48, 67, 0.08);
+        --radius: 14px;
+        --sidebar-w: 340px;
+
+        --font-body: "Franklin Gothic Book", Helvetica, sans-serif;
+        --font-ui: "Helvetica LT Std", Helvetica, sans-serif;
+        --font-nav: "Franklin Gothic Book", Helvetica, sans-serif;
+        --font-tip: "Franklin Gothic Book", sans-serif;
+        --font-head: "Century Gothic Std", "Century Gothic", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        overflow: hidden;
+      }
+
+      .app {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: var(--sidebar-w) 1fr;
+      }
+
+      aside {
+        background: var(--sidebar-bg);
+        border-right: 1px solid var(--border);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brandbar {
+        background: var(--brand-pink);
+        color: #fff;
+        padding: 18px 18px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+      }
+
+      .brand-logo {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        display: block;
+        margin: 0;
+        filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.12));
+      }
+
+      .brand-text {
+        min-width: 0;
+      }
+
+      .brand-kicker {
+        margin: 0 0 4px;
+        font-family: var(--font-ui);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.9;
+      }
+
+      .brand-title {
+        margin: 0;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .sidebar-inner {
+        padding: 18px 14px 22px;
+        flex: 1;
+        overflow: auto;
+        font-family: var(--font-tip);
+        min-height: 0;
+      }
+
+      .sidebar-inner::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      .sidebar-inner::-webkit-scrollbar-track {
+        background: var(--sidebar-bg);
+      }
+
+      .sidebar-inner::-webkit-scrollbar-thumb {
+        background: #d7e0e8;
+        border-radius: 5px;
+      }
+
+      .sidebar-inner::-webkit-scrollbar-thumb:hover {
+        background: #c7d0d8;
+      }
+
+      .hint {
+        margin: 0 0 18px;
+        padding: 12px 14px;
+        background: #ccf2fc;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .tree {
+        padding: 0;
+      }
+
+      details {
+        margin: 8px 0;
+        border-radius: 12px;
+      }
+
+      details.group {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+      }
+
+      details > summary {
+        list-style: none;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-family: var(--font-ui);
+      }
+
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details.group > summary {
+        font-weight: 700;
+        color: #1f4256;
+      }
+
+      details.group[open] > summary {
+        border-bottom: 1px solid var(--border);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+      }
+
+      .twisty {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-family: var(--font-nav);
+        flex: none;
+        color: #6d7e8a;
+        background: #fff;
+        border: 1px solid var(--border-strong);
+      }
+
+      .node-title {
+        font-family: var(--font-nav);
+        font-size: 14px;
+      }
+
+      .level {
+        margin: 0 0 10px 18px;
+        padding: 8px 0 2px 12px;
+        border-left: 1px solid #d9e2ea;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 2px 0 4px;
+      }
+
+      details.subgroup {
+        background: transparent;
+        border: 0;
+        margin: 4px 0;
+      }
+
+      details.subgroup > summary {
+        padding: 8px 10px;
+        color: #324c5c;
+        font-weight: 700;
+      }
+
+      details.subgroup[open] > summary {
+        background: transparent;
+      }
+
+      a.navlink {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--text);
+        font-family: var(--font-nav);
+        font-size: 13px;
+        line-height: 1.35;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+        outline: none;
+      }
+
+      a.navlink:hover {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      a.navlink.active {
+        background: #ffffff;
+        border-color: var(--border);
+        color: #101820;
+        font-weight: 700;
+      }
+
+      a.navlink.lesson-planner-link {
+        margin-left: 18px;
+        padding-left: 14px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 12.5px;
+        border-left: 1px solid #d9e2ea;
+        border-radius: 0 8px 8px 0;
+      }
+
+      main {
+        min-width: 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--page-bg);
+      }
+
+      .topbar {
+        background: transparent;
+        border-bottom: 0;
+        padding: 18px 20px 0;
+        flex: 0 0 auto;
+      }
+
+      .topbar-accent {
+        display: none;
+      }
+
+      .topbar-inner {
+        padding: 18px 22px 16px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 0;
+        box-shadow: var(--shadow);
+      }
+
+      .title {
+        margin: 0;
+        font-family: var(--font-head);
+        font-size: 28px;
+        line-height: 1.15;
+        color: #1a4a63;
+        font-weight: 700;
+      }
+
+      .viewer {
+        flex: 1 1 auto;
+        min-height: 0;
+        min-width: 0;
+        padding: 16px 20px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #contentFrame {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        border: 1px solid var(--border);
+        border-radius: 0;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+        background: #fff;
+      }
+
+      .home-page {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        border: 1px solid var(--border);
+        background: #fff;
+        box-shadow: var(--shadow);
+        padding: 28px 32px;
+      }
+
+      .home-page::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      .home-page::-webkit-scrollbar-track {
+        background: #f4f6f8;
+      }
+
+      .home-page::-webkit-scrollbar-thumb {
+        background: #d7e0e8;
+        border-radius: 5px;
+      }
+
+      .home-page::-webkit-scrollbar-thumb:hover {
+        background: #c7d0d8;
+      }
+
+      .home-hero {
+        margin-bottom: 22px;
+      }
+
+      .home-brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 20px 22px;
+        background: linear-gradient(180deg, #ffffff 0%, #fafbfd 100%);
+        border: 1px solid var(--border);
+      }
+
+      .home-logo {
+        width: 84px;
+        height: auto;
+        object-fit: contain;
+        flex: none;
+      }
+
+      .home-title {
+        margin: 0 0 6px;
+        font-family: var(--font-head);
+        font-size: 28px;
+        line-height: 1.15;
+        color: #1a4a63;
+        font-weight: 700;
+      }
+
+      .home-subtitle {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .home-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: auto;
+        margin-bottom: 22px;
+      }
+
+      .home-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        padding: 22px 24px;
+      }
+
+      .home-card h3 {
+        margin: 0 0 14px;
+        font-family: var(--font-head);
+        font-size: 21px;
+        color: #1a4a63;
+      }
+
+      .home-card p {
+        margin: 0 0 14px;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .home-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .home-card ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .home-card li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        font-size: 15px;
+      }
+
+      .home-card li:last-child {
+        margin-bottom: 0;
+      }
+
+      .welcome-media {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .welcome-media img {
+        width: 150px;
+        height: auto;
+        object-fit: contain;
+        flex: none;
+      }
+
+      .home-foot {
+        border: 1px solid var(--border);
+        background: #fafbfd;
+        padding: 18px 22px;
+      }
+
+      .home-foot-title {
+        margin: 0 0 8px;
+        font-family: var(--font-ui);
+        font-size: 15px;
+        font-weight: 700;
+        color: #1f4256;
+      }
+
+      .home-foot p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      .copyright-btn {
+        display: inline-block;
+        text-decoration: none;
+        background: var(--brand-pink);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-family: var(--font-ui);
+        font-size: 14px;
+        font-weight: 700;
+        transition: background 0.15s ease;
+      }
+
+      .copyright-btn:hover {
+        background: var(--brand-pink-dark);
+      }
+
+      @media (max-width: 960px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          max-height: 48vh;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+
+        .brandbar {
+          grid-template-columns: 56px 1fr;
+          gap: 12px;
+          padding: 14px 16px;
+        }
+
+        .brand-logo {
+          width: 56px;
+          height: 56px;
+        }
+
+        .brand-title {
+          font-size: 16px;
+          max-width: none;
+        }
+
+        .viewer {
+          height: 52vh;
+          padding: 12px 16px 16px;
+        }
+
+        .topbar {
+          padding: 14px 16px 0;
+        }
+
+        .topbar-inner {
+          padding: 16px 18px 14px;
+        }
+
+        .title {
+          font-size: 24px;
+        }
+
+        .home-page {
+          padding: 18px;
+        }
+
+        .home-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .home-brand {
+          align-items: flex-start;
+        }
+
+        .home-title {
+          font-size: 24px;
+        }
+
+        .welcome-media {
+          flex-direction: column;
+        }
+
+        .welcome-media img {
+          width: 140px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <aside>
+        <div class="brandbar">
+          <a href="index.html" id="homeLink">
+            <img class="brand-logo" src="images/HK logo running man white stroke.png" alt="Teacher Pack logo" />
+          </a>
+          <div class="brand-text">
+            <p class="brand-kicker">Teacher Pack</p>
+            <h1 class="brand-title">Live Well Reproductive and Sexual Health, Second Edition</h1>
+          </div>
+        </div>
+
+        <div class="sidebar-inner">
+          <p class="hint">
+            Use the navigation below to view resources and lesson plans. Click the large
+            <strong>
+              <img src="images/logo_icon.png" />
+              running man logo
+            </strong>
+            to the left of the title above to be brought back to the Teacher Pack home page.
+          </p>
+
+          <nav class="tree" aria-label="Teacher pack navigation">
+            <div class="links" style="margin-bottom: 10px">
+              <a class="navlink" href="#" data-title="Home" id="homeNavLink">Home</a>
+            </div>
+
+            <details class="group" open>
+              <summary>
+                <span class="twisty" aria-hidden="true">▸</span>
+                <span class="node-title">Introduction</span>
+              </summary>
+
+              <div class="level">
+                <div class="links">
+                  <a class="navlink" href="how_to_use_teacher_pack.html" target="contentFrame" data-title="How to Use the Teacher Pack" id="welcomeLink">How to Use the Teacher Pack</a>
+                  <a class="navlink" href="rubrics.html" target="contentFrame" data-title="Rubrics">Rubrics</a>
+                  <a class="navlink" href="skillcueposters.html" target="contentFrame" data-title="Skill Cue Posters">Skill Cue Posters</a>
+                  <a class="navlink" href="lessonquizzesandchaptertests.html" target="contentFrame" data-title="Lesson Quizzes">Lesson Quizzes</a>
+                  <a class="navlink" href="answerkeys.html" target="contentFrame" data-title="Answer Keys">Answer Keys</a>
+                  <a class="navlink" href="notetakingguides.html" target="contentFrame" data-title="Note-Taking Guides and Worksheets">Note-Taking Guides and Worksheets</a>
+                  <a class="navlink" href="powerpointpresentations.html" target="contentFrame" data-title="PowerPoint Presentations">PowerPoint Presentations</a>
+                </div>
+              </div>
+            </details>
+
+            <details class="group" open>
+              <summary>
+                <span class="twisty" aria-hidden="true">▸</span>
+                <span class="node-title">Lessons</span>
+              </summary>
+
+              <div class="level">
+                <div class="links">
+                  <a
+                    class="navlink lesson-menu-item"
+                    href="Lessons/01_Relationships and Communication Skills/01_Relationships_and_Communication_Skills.html"
+                    target="contentFrame"
+                    data-title="Lesson 1 • Relationships and Communication Skills"
+                  >
+                    <span class="node-title">Lesson 1 • Relationships and Communication Skills</span>
+                  </a>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/01_Relationships and Communication Skills/01_Relationships_and_Communication_Skills.html"
+                    target="contentFrame"
+                    data-title="Lesson 1 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                  <a class="navlink lesson-menu-item" href="Lessons/02_Dating Relationships/02_Dating_Relationships.html" target="contentFrame" data-title="Lesson 2 • Dating Relationships">
+                    <span class="node-title">Lesson 2 • Dating Relationships</span>
+                  </a>
+                  <a class="navlink lesson-planner-link" href="Lessons/02_Dating Relationships/02_Dating_Relationships.html" target="contentFrame" data-title="Lesson 2 Lesson Planner">
+                    Lesson Planner
+                  </a>
+                  <a class="navlink lesson-menu-item" href="Lessons/03_Adolescence and Puberty/03_Adolescence_and_Puberty.html" target="contentFrame" data-title="Lesson 3 • Adolescence and Puberty">
+                    <span class="node-title">Lesson 3 • Adolescence and Puberty</span>
+                  </a>
+                  <a class="navlink lesson-planner-link" href="Lessons/03_Adolescence and Puberty/03_Adolescence_and_Puberty.html" target="contentFrame" data-title="Lesson 3 Lesson Planner">
+                    Lesson Planner
+                  </a>
+                  <a
+                    class="navlink lesson-menu-item"
+                    href="Lessons/04_Female Reproductive System/04_Female_Reproductive_System.html"
+                    target="contentFrame"
+                    data-title="Lesson 4 • Female Reproductive System"
+                  >
+                    <span class="node-title">Lesson 4 • Female Reproductive System</span>
+                  </a>
+                  <a class="navlink lesson-planner-link" href="Lessons/04_Female Reproductive System/04_Female_Reproductive_System.html" target="contentFrame" data-title="Lesson 4 Lesson Planner">
+                    Lesson Planner
+                  </a>
+                  <a
+                    class="navlink lesson-menu-item"
+                    href="Lessons/05_Male Reproductive System/05_Male_Reproductive_System.html"
+                    target="contentFrame"
+                    data-title="Lesson 5 • Male Reproductive System"
+                  >
+                    <span class="node-title">Lesson 5 • Male Reproductive System</span>
+                  </a>
+                  <a class="navlink lesson-planner-link" href="Lessons/05_Male Reproductive System/05_Male_Reproductive_System.html" target="contentFrame" data-title="Lesson 5 Lesson Planner">
+                    Lesson Planner
+                  </a>
+                  <a class="navlink lesson-menu-item" href="Lessons/06_Abstinence/06_Abstinence.html" target="contentFrame" data-title="Lesson 6 • Abstinence">
+                    <span class="node-title">Lesson 6 • Abstinence</span>
+                  </a>
+                  <a class="navlink lesson-planner-link" href="Lessons/06_Abstinence/06_Abstinence.html" target="contentFrame" data-title="Lesson 6 Lesson Planner">Lesson Planner</a>
+                  <a
+                    class="navlink lesson-menu-item"
+                    href="Lessons/07_Abstinence and Contraception Foundations/07_Abstinence_and_Contraception_Foundations_corrected.html"
+                    target="contentFrame"
+                    data-title="Lesson 7 • Abstinence and Contraception (Foundations)"
+                  >
+                    <span class="node-title">Lesson 7 • Abstinence and Contraception (Foundations)</span>
+                  </a>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/07_Abstinence and Contraception Foundations/07_Abstinence_and_Contraception_Foundations_corrected.html"
+                    target="contentFrame"
+                    data-title="Lesson 7 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                  <a
+                    class="navlink lesson-menu-item"
+                    href="Lessons/08_Conception and Pregnancy Foundations/08_Conception_and_Pregnancy_Foundations.html"
+                    target="contentFrame"
+                    data-title="Lesson 8 • Concept and Pregnancy (Foundations)"
+                  >
+                    <span class="node-title">Lesson 8 • Concept and Pregnancy (Foundations)</span>
+                  </a>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/08_Conception and Pregnancy Foundations/08_Conception_and_Pregnancy_Foundations.html"
+                    target="contentFrame"
+                    data-title="Lesson 8 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                  <a
+                    class="navlink lesson-menu-item"
+                    href="Lessons/09_Sexually Transmitted Infections/09_Sexually_Transmitted_Diseases_Infections.html"
+                    target="contentFrame"
+                    data-title="Lesson 9 • Sexually Transmitted Infections"
+                  >
+                    <span class="node-title">Lesson 9 • Sexually Transmitted Infections</span>
+                  </a>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/09_Sexually Transmitted Infections/09_Sexually_Transmitted_Diseases_Infections.html"
+                    target="contentFrame"
+                    data-title="Lesson 9 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                </div>
+              </div>
+            </details>
+          </nav>
+        </div>
+      </aside>
+
+      <main>
+        <div class="topbar">
+          <div class="topbar-accent"></div>
+
+          <div class="topbar-inner">
+            <h2 class="title" id="pageTitle">Live Well Reproductive and Sexual Health, Second Edition</h2>
+          </div>
+        </div>
+
+        <div class="viewer">
+          <div class="home-page" id="homePage">
+            <div class="home-grid">
+              <div class="home-card">
+                <img src="images/LWRSH2E.jpg" alt="Cover" style="float: left; padding: 10px; padding-right: 30px" />
+                <h3>About This Teacher Pack</h3>
+                <div class="welcome-media">
+                  <div>
+                    <p>
+                      Welcome to the
+                      <em>Live Well Reproductive and Sexual Health, Second Edition</em>
+                      , Teacher's Guide.
+                    </p>
+                    <p>Congratulations! You have complete access to the teacher resources that will help you deliver the Live Well Reproductive and Sexual Health program.</p>
+                    <p>
+                      This Teacher's Guide contains all the tools you need to easily implement a flexible, customizable program, including eight lesson plans that correspond to the lessons in the
+                      interactive web text or ebook. You will be able to tailor the program to the needs of your students and your school.
+                    </p>
+                    <p>
+                      Each lesson of Live Well Reproductive and Sexual Health comes with supporting ancillaries for students and teachers. These materials are designed to progress student learning in
+                      a way that builds critical health skills grounded in functional health knowledge. Each lesson has a corresponding lesson planning chart with links to all associated instructor
+                      and student resources. Some elements are editable and should be customized to fit your class. For example, the optional Understanding My Health preassessment is a simple
+                      questionnaire where students can answer Yes or No to determine what they already know and what they don't. You may wish to remove certain items from the preassessment if you will
+                      not be teaching them, such as "I can explain what sexual orientation is" or "I can explain what gender identity means." Many materials are modifiable to allow teachers to make
+                      adjustments that best suit the characteristics and readiness of their students, the unique and nuanced standards and expectations of their school districts and states, and the
+                      specific strengths of the teachers themselves.
+                    </p>
+                    <p>To begin, simply choose How to Use the Teacher Pack.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="home-foot">
+              <div class="home-foot-title">Copyright</div>
+              <p>Use the document below to review copyright and permissions information for these materials.</p>
+              <a href="docs/Farrar2E_Copyright.docx" target="_blank" download class="copyright-btn">View Copyright Document</a>
+            </div>
+          </div>
+
+          <iframe name="contentFrame" id="contentFrame" title="Teacher Pack Viewer" style="display: none"></iframe>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll("a.navlink"));
+        const frame = document.getElementById("contentFrame");
+        const homePage = document.getElementById("homePage");
+        const pageTitle = document.getElementById("pageTitle");
+        const homeLink = document.getElementById("homeNavLink");
+
+        function openAncestorDetails(el) {
+          let d = el && el.closest ? el.closest("details") : null;
+          while (d) {
+            d.open = true;
+            d = d.parentElement ? d.parentElement.closest("details") : null;
+          }
+        }
+
+        function setActive(link) {
+          links.forEach((a) => a.classList.toggle("active", a === link));
+          const title = link.getAttribute("data-title") || link.textContent.trim();
+          if (pageTitle) pageTitle.textContent = title;
+        }
+
+        function showHome() {
+          if (homePage) homePage.style.display = "block";
+          if (frame) {
+            frame.style.display = "none";
+            frame.src = "";
+          }
+          if (homeLink) setActive(homeLink);
+          if (pageTitle) pageTitle.innerHTML = "<em>Live Well Reproductive and Sexual Health, Second Edition</em>";
+        }
+
+        links.forEach((a) => {
+          a.addEventListener("click", (e) => {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+
+            if (a.id === "homeNavLink") {
+              showHome();
+              return;
+            }
+
+            setActive(a);
+            openAncestorDetails(a);
+
+            if (homePage) homePage.style.display = "none";
+            if (frame) {
+              frame.style.display = "block";
+              frame.src = a.getAttribute("href");
+            }
+          });
+        });
+
+        const allDetails = Array.from(document.querySelectorAll("details"));
+        function syncTwisty(d) {
+          const t = d.querySelector(":scope > summary .twisty");
+          if (!t) return;
+          t.textContent = d.open ? "▾" : "▸";
+        }
+
+        allDetails.forEach((d) => {
+          syncTwisty(d);
+          d.addEventListener("toggle", () => syncTwisty(d));
+        });
+
+        showHome();
+      })();
+    </script>
+  </body>
+</html>

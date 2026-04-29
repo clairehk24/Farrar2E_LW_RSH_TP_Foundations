@@ -1,0 +1,676 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How to Use the Teacher Pack</title>
+    <style>
+      :root {
+        --brand-pink: #a71b4c;
+        --brand-blue: #0096c7;
+        --page-bg: #eef2f5;
+        --surface: #ffffff;
+        --surface-soft: #f8fafc;
+        --text: rgba(0, 0, 0, 0.84);
+        --muted: rgba(0, 0, 0, 0.64);
+        --border: #e6ecf1;
+        --shadow: 0 8px 24px rgba(29, 48, 67, 0.08);
+        --font-body: "Franklin Gothic Book", Helvetica, sans-serif;
+        --font-ui: "Helvetica LT Std", Helvetica, sans-serif;
+        --font-nav: "Franklin Gothic Book", Helvetica, sans-serif;
+        --font-tip: "Franklin Gothic Book", sans-serif;
+        --font-head: "Century Gothic Std", "Century Gothic", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.7;
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      .top-accent {
+        height: 8px;
+        background: var(--brand-pink);
+        flex: 0 0 8px;
+      }
+
+      .page {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        height: calc(100vh - 8px);
+        overflow: auto;
+      }
+      .content {
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-top: 0;
+        border-radius: 0;
+        box-shadow: var(--shadow);
+        overflow: visible;
+        min-height: 100%;
+      }
+
+      .toc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+        padding: 16px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 4px 12px rgba(29, 48, 67, 0.06);
+      }
+
+      .toc a {
+        text-decoration: none;
+        color: #1a4a63;
+        background: #f7fbfd;
+        border: 1px solid #cfe4ec;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-family: var(--font-ui);
+        font-weight: 700;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .toc a:hover {
+        border-color: var(--brand-blue);
+        background: var(--brand-blue);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+
+      .ct-content {
+        width: 100%;
+        padding: 28px 34px 40px;
+        background: #fff;
+      }
+
+      .ct-page-title {
+        border-left: 0;
+        padding-left: 0;
+        margin-bottom: 0;
+      }
+
+      .ct-title {
+        margin: 0 0 12px;
+        font-family: var(--font-head);
+        font-size: 2rem;
+        line-height: 1.2;
+        color: #1a4a63;
+        font-weight: 700;
+      }
+
+      hr {
+        border: 0;
+        border-top: 1px solid var(--border);
+        margin: 1.25rem 0 1.5rem;
+      }
+
+      p {
+        color: rgba(0, 0, 0, 0.8);
+        font-weight: 400;
+        margin: 0 0 1rem;
+      }
+
+      h2,
+      h3,
+      h4 {
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+
+      h2 {
+        font-family: var(--font-head);
+        font-size: 1.55rem;
+        color: #1a4a63;
+        margin-top: 2.5rem;
+        scroll-margin-top: 96px;
+      }
+
+      h3 {
+        font-family: var(--font-head);
+        font-size: 1.2rem;
+        color: #234f66;
+        margin-top: 2rem;
+      }
+
+      .ct-content > h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 2.2rem;
+        font-family: var(--font-ui);
+        color: #2d3e4a;
+      }
+
+      img.float-left {
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        width: 150px;
+        max-width: 40%;
+        height: auto;
+      }
+
+      figure {
+        margin: 1.5rem 0;
+      }
+
+      .figure-img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .figure-caption {
+        margin-top: 0.5rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      dl,
+      ol,
+      ul {
+        font-weight: 400;
+        margin: 0 0 1rem 1.5rem;
+        padding: 0;
+      }
+
+      li {
+        margin: 0.35rem 0;
+      }
+
+      ol ol,
+      ol ul,
+      ul ol,
+      ul ul {
+        margin-top: 0.45rem;
+        margin-bottom: 0.45rem;
+        margin-left: 1.5rem;
+      }
+
+      td p {
+        line-height: 1.5;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0 1.4rem;
+        border: 1px solid var(--border);
+        background: #fff;
+        font-size: 0.97rem;
+      }
+
+      td {
+        border: 1px solid var(--border);
+        padding: 12px 14px;
+        vertical-align: top;
+        text-align: left;
+      }
+
+      thead td {
+        background: #f5f7f9;
+        font-weight: 700;
+        color: #294757;
+      }
+
+      a {
+        color: #0a6e95;
+      }
+
+      a:hover {
+        color: #084f6b;
+      }
+
+      .lead::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      @media (max-width: 700px) {
+        .ct-content {
+          padding: 22px 18px 26px;
+        }
+        .toc {
+          padding: 12px 14px;
+        }
+        .ct-title {
+          font-size: 1.7rem;
+        }
+        h2 {
+          font-size: 1.35rem;
+        }
+        img.float-left {
+          float: none;
+          max-width: 220px;
+          width: 100%;
+          margin: 0 0 14px 0;
+        }
+        td {
+          padding: 10px 10px;
+        }
+        .page {
+          height: calc(100vh - 8px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-accent"></div>
+    <div class="page">
+      <main class="content" role="main">
+        <nav class="toc" aria-label="Section navigation">
+          <a href="#learn">Learn More About the Instructor Resources</a>
+          <a href="#assessing">Assessing Student Learning</a>
+        </nav>
+
+        <section class="ct-content">
+          <h2 id="learn">Learn More About the Instructor Resources</h2>
+          <p>There is one complete set of lesson materials for each lesson. These resources include lesson plans, worksheets, Note-Taking Guides, PowerPoint presentations, and lesson quizzes.</p>
+
+          <h3>Videos</h3>
+          <p>
+            Each lesson includes a three- to four-minute video showing excerpts from teen interviews related to the lesson topic. These videos are meant to promote class discussion or to serve as
+            self-reflection prompts. Students can view the videos and then take a few minutes to write their own answers to the questions posed. In class, the videos can be used either as a
+            jumping-off point at the start of each lesson, or they can be shown at the end of the lesson to facilitate group discussion and reinforce the skills and concepts being taught.
+          </p>
+          <p>Students have access to the videos from the interactive web text (IWT). Teachers can access the videos from links in the lesson planners.</p>
+
+          <h3>What's in a Lesson Plan</h3>
+          <p>
+            The lesson plans are all organized and presented in a consistent way. Each lesson plan includes the following elements and uses the supporting materials identified in the section that
+            follows.
+          </p>
+          <ol>
+            <li>Overview: This is a short statement that anchors the lesson content and can be used to remind students of the focus of the day.</li>
+            <li>Learning targets: These are learning outcomes that are specific to the lesson plan. Learning targets include both cognitive and behavioral (skill) targets.</li>
+            <li>Preparation: This includes a complete description of all materials and preparations needed to successfully implement the lesson.</li>
+            <li>
+              Warm-up activity: This includes activities that can be used to get students focused and ready to learn. There are multiple options to choose from:
+              <ol>
+                <li>
+                  Journal question: Students can write or discuss questions that solicit perspectives, understandings, and applications of lesson content. This is a great choice for reinforcing
+                  writing and reflection skills.
+                </li>
+                <li>
+                  Vocabulary review: This is a simple tool to identify and consider key terms found in the lesson. The vocabulary review builds student vocabulary and can be especially helpful for
+                  students with learning challenges or for whom English is a second language.
+                </li>
+                <li>Quiz: This is a pretest for students and teachers to quickly assess prior learning to help focus the lesson.</li>
+              </ol>
+            </li>
+            <li>
+              Lesson content: The content highlights the functional health knowledge needed to successfully complete the lesson focus. There are options for working with the lesson content:
+              <ol>
+                <li>PowerPoint slides can be used as an outline for lecture or discussion.</li>
+                <li>A Note-Taking Guide provides a graphic organizer that can help students identify and consider critical concepts in the lesson.</li>
+              </ol>
+            </li>
+            <li>Lesson focus: At the heart of each lesson is an activity that focuses on skill development using the lesson content.</li>
+            <li>Skill-Building Challenge Worksheet: This includes step-by-step instructions, using a variety of instructional strategies to help students build essential health skills.</li>
+            <li>
+              Challenge activity: An optional challenge activity is presented to allow for more proficient students to experience a more advanced level of engagement with the lesson. These may also be
+              used or adapted as a homework task.
+            </li>
+            <li>Reflection and summary: These provide an easy way to reinforce learning and check for understanding using the lesson's learning targets.</li>
+            <li>
+              Assessment: There are options that allow for summative assessment of the lesson:
+              <ol>
+                <li>Lesson quiz</li>
+                <li>Answer keys (for assessing performance on any of the worksheets from the lesson)</li>
+              </ol>
+            </li>
+          </ol>
+
+          <h3>Lesson Plan Supporting Material Details</h3>
+
+          <h4>Vocabulary Review Worksheet</h4>
+          <p>
+            The Vocabulary Review Worksheet is best used as a warm-up activity or as a task for less proficient or English language learner students. This worksheet provides a way for students to
+            grasp and practice key vocabulary terms from the lesson. There is a separate English language learner version if you choose to use it.
+          </p>
+
+          <h4>Note-Taking Guide</h4>
+          <p>
+            The Note-Taking Guide can be used by all students to engage with lesson content. This guide can also help students organize their understanding of key concepts as they read or to assess
+            content knowledge, particularly among students who are less proficient. Answers to the Note-Taking Guides are included in the answer key.
+          </p>
+
+          <h4>Lesson Quizzes</h4>
+          <p>There is a premade quiz for each lesson.</p>
+
+          <h4>Skill-Building Challenge Worksheet</h4>
+          <p>
+            This worksheet corresponds with the Skill-Building Challenge found in the student lesson and aligns with step-by-step instructions for the skill-development activity provided in the
+            lesson. Skill-Building Challenge Worksheets can be used to develop health skills and can also be used as formal graded assessments.
+          </p>
+
+          <h4>PowerPoint Slides</h4>
+          <p>Modifiable PowerPoint slides highlight the most critical content from the lesson and are presented in a simple outline form that makes them easy to move through during the lesson.</p>
+
+          <h4>Answer Key</h4>
+          <p>Each lesson includes an answer key for the Vocabulary Review Worksheet, the Lesson Quiz, the Note-Taking Guide, and the Skill-Building Challenge Worksheet.</p>
+
+          <h3>Analytic and Holistic Rubrics for Skill Assessment</h3>
+          <p>
+            In addition to lesson resources, the
+            <em>Live Well Reproductive and Sexual Health, Second Edition</em>
+            program includes two full sets of analytic and holistic rubrics that can be used with almost all skill development activities in the lessons or in the lesson plans. These rubrics focus on
+            the development and execution of health skills and are not specific to content. This allows them to be used across units and over time, thus helping teachers evaluate how well students are
+            developing their health skills.
+          </p>
+
+          <p>
+            The lesson plans are all organized and presented consistently. Each lesson plan includes the following elements and uses the supporting materials identified in the section that follows.
+          </p>
+
+          <ol>
+            <li>Overview: A short statement that anchors the lesson content and can be used to remind students of the focus of the day.</li>
+            <li>Learning Targets: Learning outcomes that are specific to the lesson plan.</li>
+            <li>Preparation: A complete description of all materials and preparations needed to successfully implement the lesson.</li>
+            <li>
+              Warm-Up Activity: Activities that can be used to get students focused and ready to learn. There are multiple options to choose from:
+              <ol>
+                <li>
+                  Self-Assessment: A questionnaire for connecting with the content and reflecting on the contentâ€™s relevance to the studentâ€™s life. (This option appears in the first lesson of each
+                  chapter.)
+                </li>
+                <li>Journal Question: Students can write or discuss questions that solicit perspectives, understandings, and applications of lesson content.</li>
+                <li>Vocabulary Review: A simple tool to identify and consider key terms found in the lesson.</li>
+                <li>Quiz: A pretest for students and teachers to use to quickly assess prior learning to help focus the lesson.</li>
+              </ol>
+            </li>
+            <li>
+              Lesson Content: Highlights the functional health knowledge needed to successfully complete the lesson. There are multiple options for working with the lesson content:
+              <ol>
+                <li>PowerPoint slides can be used as an outline for lecture or discussion.</li>
+                <li>A note-taking guide can help students identify and consider critical concepts in the lesson.</li>
+              </ol>
+            </li>
+            <li>
+              Lesson Focus: At the heart of each lesson is an activity that focuses on skill development using the lesson content.
+              <ol>
+                <li>Skill-Building Challenge Worksheet: Step-by-step instructions are provided, using a variety of instructional strategies to help students build essential health skills.</li>
+              </ol>
+            </li>
+            <li>
+              Challenge Activity: An optional challenge activity is presented to allow for more proficient students to experience a more advanced level of engagement with the lesson. These may also be
+              used or adapted as a homework task.
+            </li>
+            <li>Reflection and Summary: An easy way to check for understanding using the lessonâ€™s learning targets.</li>
+            <li>
+              Assessment: There are two summative options:
+              <ol>
+                <li>Lesson quiz</li>
+                <li>Worksheet</li>
+              </ol>
+            </li>
+          </ol>
+
+          <h3>Lesson Plan Supporting Material Details</h3>
+
+          <h4>Lesson Planner</h4>
+
+          <p>
+            The lesson planners are comprehensive tools that you can use to plan each lesson or unit of instruction. The planners are organized by chapter. Each chapter shows the resources available
+            for each lesson plan. Using the planners, you can quickly find the following resources for each lesson plan:
+          </p>
+
+          <ul>
+            <li>Video</li>
+            <li>Student learning targets</li>
+            <li>Student and instructor ancillary resources recommended for use</li>
+            <li>Differentiated instruction options for each lesson plan</li>
+          </ul>
+
+          <p>Links to all lesson plan supporting materials can be made from the lesson planners.</p>
+
+          <h4>Videos</h4>
+
+          <p>
+            Each chapter includes a three- to four-minute video showing excerpts of teen interviews related to the chapter topic. These videos are meant to promote class discussion or to serve as
+            self-reflection prompts. Students can view the videos and then take a few minutes to write their own answers to the questions posed. In class, the videos can be used either as a
+            jumping-off point at the start of each chapter, or they can be shown at the end of the chapter to facilitate group discussion and reinforce the skills and concepts being taught. Students
+            have access to the videos from the Interactive Web Text (IWT) or Web Resource (WR). Teachers can access the videos from links in the lesson planners.
+          </p>
+
+          <h4>Self-Assessment Worksheet</h4>
+
+          <p>
+            Students can use the Self-Assessment Worksheet to complete the self-assessment that appears in the chapter opener of the student text. There is only one self-assessment per chapter, and
+            the associated worksheet appears in lesson 1 of the chapter.
+          </p>
+
+          <h4>Vocabulary Review Worksheet</h4>
+
+          <p>
+            The Vocabulary Review Worksheet is best used as a warm-up activity or as a task for less proficient or ELL students. This worksheet provides a way for students to grasp and practice key
+            vocabulary terms from the lesson. There is a separate ELL version of the worksheet if you choose to use it.
+          </p>
+
+          <h4>Note-Taking Guide</h4>
+
+          <p>
+            Students can use the Note-Taking Guide to engage with the lesson content. This guide can also be used to help students organize their understanding of key concepts as they read or to
+            assess content knowledge, particularly among students who are less proficient. The guide is available as a separate handout for each individual lesson, or you can share the entire chapter
+            guide with your students.
+          </p>
+
+          <h4>Lesson Quizzes and Chapter Tests</h4>
+
+          <p>
+            There is a quiz for each lesson in the book. In addition, each chapter includes a test that covers all the material in the chapter. You can also create your own quizzes. Questions may be
+            selected based on the content, lesson, or difficulty level.
+          </p>
+
+          <h4>Skill-Building Challenge Worksheet</h4>
+
+          <p>
+            This worksheet corresponds with the Skill-Building Challenge found in the text and aligns with step-by-step instructions for the skill development activity provided in the lesson.
+            Skill-Building Challenge Worksheets can be used to develop health skills and can also be used as formal graded assessments.
+          </p>
+
+          <h4>PowerPoint Slides</h4>
+
+          <p>Modifiable PowerPoint slides highlight the most critical content from the lesson and are presented in a simple outline form that makes them easy to move through during the lesson.</p>
+
+          <h4>Image Bank</h4>
+
+          <p>New to this edition, the Image Bank offers most of the figures, content photos, and tables from the text, organized by chapter.</p>
+
+          <h4>Answer Key</h4>
+
+          <p>Each chapter includes an answer key for the Vocabulary Review Worksheet, the Note-Taking Guide, Test Your Knowledge questions, lesson quizzes, and chapter tests.</p>
+
+          <h3>Unit-Level Supporting Materials</h3>
+
+          <p>In addition to individual lessons for each chapter, a few unit-level resources are also available.</p>
+
+          <h4>Unit Tests</h4>
+
+          <p>The test bank allows for customized quizzes to be created. Questions can be selected based on lesson content and level of difficulty.</p>
+
+          <h3>Analytic and Holistic Rubrics for Skill Assessment</h3>
+
+          <p>
+            In addition to lesson resources, the Live Well program includes two full sets of analytic and holistic rubrics that can be used with almost all skill development activities in the lessons
+            or in the lesson plans. These rubrics focus on the development and execution of health skills and are not specific to content. This allows them to be used across units and over time, thus
+            helping teachers evaluate how well students are developing their health skills.
+          </p>
+
+          <h2 id="assessing">Assessing Student Learning</h2>
+          <p>
+            It is now common practice for teachers to have to provide evidence of student learning, either in relation to their own teaching effectiveness or as part of larger systems of assessment
+            and accountability. In
+            <em>Live Well Reproductive and Sexual Health, Second Edition</em>
+            , we have provided tools to help simplify this process. Many of the ancillary materials are also readily used as assessment tools.
+          </p>
+          <p>Before providing an overview of the assessments that are available, we will begin with a brief reminder of key assessment terms and practices.</p>
+
+          <h3>Overview of Assessment</h3>
+
+          <p>
+            <strong>Assessment</strong>
+            is the systematic collection of information about student learning, using the time, knowledge, expertise, and resources available, to inform decisions about how to improve learning.
+          </p>
+
+          <p>At its most basic level, assessment is composed of the following:</p>
+
+          <ol>
+            <li>Articulating clear learning outcomes or learning targets</li>
+            <li>Gathering evidence and information about how well students are meeting goals</li>
+            <li>Interpreting evidence and information based on predetermined standards or expectations</li>
+            <li>Using the evidence to improve student learning by altering instruction, methodologies, materials, or assignments</li>
+          </ol>
+
+          <h3>Types of Assessment</h3>
+
+          <p>Assessment is often referred to as either direct or indirect and as formative or summative.</p>
+          <ul>
+            <li>
+              Indirect assessment includes asking current and past students how well they thought they learned or inquiring about variables related to student learning such as satisfaction and
+              engagement. Having students rate enjoyment of an activity and asking them to reflect on how well they performed on a task are examples of indirect assessment.
+            </li>
+            <li>
+              Direct assessment includes the demonstration of learning itself. Direct assessments require students to use their knowledge, skills, and abilities to complete the selected task. Quizzes,
+              exams, projects, and assignments are common forms of direct assessment.
+            </li>
+            <li>
+              Formative assessment is assessment designed to give feedback on and to improve the process of learning. It captures students' progress toward the desired outcome. Formative assessment is
+              typically embedded classroom assessment.
+            </li>
+            <li>
+              Summative assessment is assessment done for the purpose of providing an evaluative summary and capturing student achievement. Summative assessment typically occurs at the completion of a
+              major project, a unit, or a course. Having students offer a thumbs up or thumbs down in response to a question and checking for understanding by having students repeat instructions are
+              examples of indirect assessments.
+            </li>
+          </ul>
+
+          <h3>Assessment Resources</h3>
+
+          <p>
+            Throughout the text you will find many features that can support all forms of assessment, indirect, direct, formative, and summative, depending on how you choose to use them. You will also
+            find two full comprehensive sets of rubrics, which can be used for any of the skill-development activities found in the lessons or in the instructor resources. These options provide you
+            with ways for you to check student learning and skill development, for students to reflect on their own knowledge and skill development, and for data to be collected to demonstrate how
+            your class as a whole is progressing in your course.
+          </p>
+
+          <p>Suggestions on how resources available in the student text and the instructor ancillaries can be used to support instruction and the assessment of student learning are described next.</p>
+
+          <h4>Note-Taking Guide</h4>
+          <p>
+            Referenced on the lesson opener, this handout is available as part of each lesson's resources. The Note-Taking Guide helps students read more effectively and provides them with
+            opportunities to organize and summarize information in a variety of ways.
+          </p>
+          <p>
+            <em>Assessment suggestion:</em>
+            Spot check the completed guides as an informal, formative assessment to help you identify areas of content where students struggle with comprehension or understanding. Use this information
+            to identify areas where more time should be spent in class. This worksheet could also be used as a formal evaluation of reading comprehension and student learning regarding to health
+            content.
+          </p>
+          <p>Students also have access to the Note-Taking Guide as part of the interactive web text.</p>
+
+          <h4>Write About It</h4>
+          <p>
+            Each lesson begins with an optional Write About It question. Designed as a transition or warm-up activity, it helps students think about the content they will be learning in relation to
+            their own knowledge, self-awareness, or life.
+          </p>
+          <p>
+            <em>Assessment suggestion:</em>
+            Use this as an opportunity to assess student writing in support of cross-curricular needs or have students respond to the prompt again at the end of the lesson or unit as a way for them to
+            reflect on their own learning or growth or to assess improvements in understanding. Since most of these questions are based on opinion and experience, evaluation should focus on
+            thoroughness, thoughtfulness, and writing.
+          </p>
+
+          <h4>Skill-Building Challenge and Skill-Building Challenge Worksheet</h4>
+          <p>
+            The Skill-Building Challenge sits at the heart of each lesson. This activity is presented first in the student text and is used as a primary classroom activity in each lesson plan. The
+            Skill-Building Challenge is accompanied by a Skill-Building Challenge Worksheet. In this activity, students are asked to apply some element of the content covered in the lesson to one of
+            the major health skills from SHAPE America's National Health Education Standards, Third Edition.
+          </p>
+          <p>
+            <em>Assessment suggestion:</em>
+            Have students complete the Skill-Building Challenge using the Skill-Building Challenge Worksheet; grade the worksheet itself as a formal assessment that focuses on skill development. This
+            approach works best for skill-building activities that involve role playing, scenarios, and problem-solving activities. Alternatively, have the students complete the Skill-Building
+            Challenge and use one of the analytic or holistic rubrics to assess overall achievement of the skill that is being developed. This approach works best for the skill challenges that have
+            students directly engage in actions or behaviors such as goal setting, practicing health behaviors, and advocacy.
+          </p>
+
+          <h4>Healthy Living Skills</h4>
+          <p>
+            Right after the Skill-Building Challenge, you will find one or more Healthy Living Skills activities. These are designed to provide additional opportunities for students to work on health
+            skills. Generally, these are slightly smaller tasks that don't come with specific worksheets. These skill activities can be assigned as homework, and for more advanced learning
+            opportunities the students could be asked to develop their own tracking tool to monitor their progress on assigned Healthy Living Skills.
+          </p>
+          <p>
+            <em>Assessment suggestion:</em>
+            Have students complete one or more of these tasks and use the corresponding analytic or holistic rubric to evaluate the students' work.
+          </p>
+
+          <h4>Lesson Quizzes</h4>
+          <p>Use the premade quizzes for each lesson or create your own tests.</p>
+          <p>
+            <em>Assessment suggestion:</em>
+            Use these quizzes as pretests and posttests to show progress in student learning related to different health content areas.
+          </p>
+
+          <h4>My Action Plan</h4>
+          <p>
+            The Teacher's Guide includes a sample My Action Plan Worksheet as well as a blank form. This worksheet asks students to identify SMART goals, make a plan, track their progress, and reflect
+            on their growth. The general worksheet format could be used for any skill area at any point in a term. This worksheet supports multiple National HE Standards and can provide valuable
+            evidence of student learning and skill development over time.
+          </p>
+          <p>
+            <em>Assessment suggestion:</em>
+            Ask students to set a goal in any area of health at the beginning of a term and then log their progress throughout the term. Have them reflect on their progress at the midpoint and the end
+            of the term. Use the analytic or holistic rubric to assess their skill development.
+          </p>
+
+          <h4>Holistic and Analytic Rubrics</h4>
+
+          <p>
+            Two sets of rubrics focused on assessing skill development are provided in the resources. These rubrics are not tied to any single assignment or content area. In fact, they are designed to
+            be used when assessing any health skill at any point in a health class. In this way, they can be used to help quantify student growth on any of the health skills that are part of the
+            National HE Standards.
+          </p>
+
+          <p>
+            Holistic rubrics provide a fast, big-picture view of a student's progress on a given skill. These rubrics are aligned to the skill cues that are presented throughout the lessons. Students
+            are given a single combined score for all the elements of the skill cue.
+          </p>
+
+          <p>
+            Analytic rubrics, like the holistic rubrics, allow you to determine progress on a given skill. The rubrics are aligned to the skill cues and allow you to identify and evaluate more
+            specific areas of strength or weakness in a student's skill development by giving points separately for each element of the skill cue.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

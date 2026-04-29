@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skill Cue Posters</title>
+    <style>
+      :root {
+        --brand-pink: #a71b4c;
+        --brand-blue: #0096c7;
+        --page-bg: #eef2f5;
+        --surface: #ffffff;
+        --surface-soft: #f8fafc;
+        --text: rgba(0, 0, 0, 0.84);
+        --muted: rgba(0, 0, 0, 0.64);
+        --border: #e6ecf1;
+        --shadow: 0 8px 24px rgba(29, 48, 67, 0.08);
+        --font-body: "Franklin Gothic Book", Helvetica, sans-serif;
+        --font-ui: "Helvetica LT Std", Helvetica, sans-serif;
+        --font-nav: "Franklin Gothic Book", Helvetica, sans-serif;
+        --font-tip: "Franklin Gothic Book", sans-serif;
+        --font-head: "Century Gothic Std", "Century Gothic", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.7;
+      }
+      .top-accent {
+        height: 8px;
+        background: var(--brand-pink);
+      }
+      .page {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 16px 16px 28px;
+      }
+      .content {
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 0;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .hero {
+        display: none;
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--brand-pink);
+        font-weight: 700;
+        font-family: var(--font-ui);
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0 0 12px;
+        line-height: 1.2;
+      }
+      h1 {
+        font-family: var(--font-head);
+        font-size: 2rem;
+        color: #1a4a63;
+        font-weight: 700;
+      }
+      h2 {
+        font-family: var(--font-head);
+        font-size: 1.45rem;
+        color: #1a4a63;
+        margin-top: 2rem;
+      }
+      h3 {
+        font-family: var(--font-head);
+        font-size: 1.15rem;
+        color: #234f66;
+        margin-top: 1.8rem;
+      }
+      h4 {
+        font-family: var(--font-ui);
+        font-size: 1.02rem;
+        color: #2d3e4a;
+        font-weight: 700;
+        margin-top: 1.4rem;
+      }
+      hr {
+        display: none;
+      }
+      .body {
+        padding: 28px 34px 40px;
+      }
+      p {
+        margin: 0 0 1rem;
+      }
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 1rem;
+      }
+      .download-btn {
+        display: inline-block;
+        text-decoration: none;
+        color: #1a4a63;
+        background: #f7fbfd;
+        border: 1px solid #cfe4ec;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-family: var(--font-ui);
+        font-weight: 700;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease,
+          transform 0.15s ease;
+        box-shadow: 0 2px 6px rgba(29, 48, 67, 0.04);
+      }
+      .download-btn:hover {
+        border-color: var(--brand-blue);
+        background: var(--brand-blue);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+      .resource-block {
+        margin: 0 0 1.6rem;
+        padding: 0 0 1.2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .resource-block:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      ul,
+      ol {
+        margin: 0 0 1rem 1.5rem;
+        padding: 0;
+      }
+      li {
+        margin: 0.35rem 0;
+      }
+      a {
+        color: #0a6e95;
+      }
+      a:hover {
+        color: #084f6b;
+      }
+      @media (max-width: 700px) {
+        .page {
+          padding: 10px 10px 20px;
+        }
+        .hero,
+        .body {
+          padding: 22px 18px 26px;
+        }
+        h1 {
+          font-size: 1.7rem;
+        }
+        h2 {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-accent"></div>
+    <div class="page">
+      <main class="content" role="main">
+        <section class="body">
+          <p>You can download the Skill Cue Posters for use with each chapter.</p>
+          <p>The files are provided in PDF (.pdf) format and have been zipped for your convenience.</p>
+          <div class="button-row"><a class="download-btn" href="docs/LINK.zip">Download Skill Cue Posters</a></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
