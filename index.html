@@ -212,6 +212,18 @@
         padding: 2px 0 4px;
       }
 
+      .lesson-menu-heading {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+        font-family: var(--font-nav);
+        font-size: 13px;
+        line-height: 1.35;
+        padding: 8px 10px 4px;
+        font-weight: 700;
+      }
+
       details.subgroup {
         background: transparent;
         border: 0;
@@ -258,7 +270,8 @@
         font-weight: 700;
       }
 
-      a.navlink.lesson-planner-link {
+      a.navlink.lesson-planner-link,
+      a.navlink.lesson-plan-link {
         margin-left: 18px;
         padding-left: 14px;
         padding-top: 5px;
@@ -616,107 +629,142 @@
 
               <div class="level">
                 <div class="links">
-                  <a
-                    class="navlink lesson-menu-item"
-                    href="Lessons/01_Relationships and Communication Skills/01_Relationships_and_Communication_Skills.html"
-                    target="contentFrame"
-                    data-title="Lesson 1 • Relationships and Communication Skills"
-                  >
+                  <div class="lesson-menu-heading">
                     <span class="node-title">Lesson 1 • Relationships and Communication Skills</span>
-                  </a>
+                  </div>
                   <a
                     class="navlink lesson-planner-link"
-                    href="Lessons/01_Relationships and Communication Skills/01_Relationships_and_Communication_Skills.html"
+                    href="Lessons/01_Relationships and Communication Skills/01_Relationships_and_Communication_Skills_Lesson_Planner.html"
                     target="contentFrame"
                     data-title="Lesson 1 Lesson Planner"
                   >
                     Lesson Planner
                   </a>
-                  <a class="navlink lesson-menu-item" href="Lessons/02_Dating Relationships/02_Dating_Relationships.html" target="contentFrame" data-title="Lesson 2 • Dating Relationships">
+                  <a
+                    class="navlink lesson-plan-link"
+                    href="Lessons/01_Relationships and Communication Skills/01_Relationships_and_Communication_Skills_Lesson_Plan.html"
+                    target="contentFrame"
+                    data-title="Lesson 1 Lesson Plan"
+                  >
+                    Lesson Plan
+                  </a>
+                  <div class="lesson-menu-heading">
                     <span class="node-title">Lesson 2 • Dating Relationships</span>
-                  </a>
-                  <a class="navlink lesson-planner-link" href="Lessons/02_Dating Relationships/02_Dating_Relationships.html" target="contentFrame" data-title="Lesson 2 Lesson Planner">
+                  </div>
+                  <a class="navlink lesson-planner-link" href="Lessons/02_Dating Relationships/02_Dating_Relationships_Lesson_Planner.html" target="contentFrame" data-title="Lesson 2 Lesson Planner">
                     Lesson Planner
                   </a>
-                  <a class="navlink lesson-menu-item" href="Lessons/03_Adolescence and Puberty/03_Adolescence_and_Puberty.html" target="contentFrame" data-title="Lesson 3 • Adolescence and Puberty">
+                  <a class="navlink lesson-plan-link" href="Lessons/02_Dating Relationships/02_Dating_Relationships_Lesson_Plan.html" target="contentFrame" data-title="Lesson 2 Lesson Plan">
+                    Lesson Plan
+                  </a>
+                  <div class="lesson-menu-heading">
                     <span class="node-title">Lesson 3 • Adolescence and Puberty</span>
-                  </a>
-                  <a class="navlink lesson-planner-link" href="Lessons/03_Adolescence and Puberty/03_Adolescence_and_Puberty.html" target="contentFrame" data-title="Lesson 3 Lesson Planner">
-                    Lesson Planner
-                  </a>
-                  <a
-                    class="navlink lesson-menu-item"
-                    href="Lessons/04_Female Reproductive System/04_Female_Reproductive_System.html"
-                    target="contentFrame"
-                    data-title="Lesson 4 • Female Reproductive System"
-                  >
-                    <span class="node-title">Lesson 4 • Female Reproductive System</span>
-                  </a>
-                  <a class="navlink lesson-planner-link" href="Lessons/04_Female Reproductive System/04_Female_Reproductive_System.html" target="contentFrame" data-title="Lesson 4 Lesson Planner">
-                    Lesson Planner
-                  </a>
-                  <a
-                    class="navlink lesson-menu-item"
-                    href="Lessons/05_Male Reproductive System/05_Male_Reproductive_System.html"
-                    target="contentFrame"
-                    data-title="Lesson 5 • Male Reproductive System"
-                  >
-                    <span class="node-title">Lesson 5 • Male Reproductive System</span>
-                  </a>
-                  <a class="navlink lesson-planner-link" href="Lessons/05_Male Reproductive System/05_Male_Reproductive_System.html" target="contentFrame" data-title="Lesson 5 Lesson Planner">
-                    Lesson Planner
-                  </a>
-                  <a class="navlink lesson-menu-item" href="Lessons/06_Abstinence/06_Abstinence.html" target="contentFrame" data-title="Lesson 6 • Abstinence">
-                    <span class="node-title">Lesson 6 • Abstinence</span>
-                  </a>
-                  <a class="navlink lesson-planner-link" href="Lessons/06_Abstinence/06_Abstinence.html" target="contentFrame" data-title="Lesson 6 Lesson Planner">Lesson Planner</a>
-                  <a
-                    class="navlink lesson-menu-item"
-                    href="Lessons/07_Abstinence and Contraception Foundations/07_Abstinence_and_Contraception_Foundations_corrected.html"
-                    target="contentFrame"
-                    data-title="Lesson 7 • Abstinence and Contraception (Foundations)"
-                  >
-                    <span class="node-title">Lesson 7 • Abstinence and Contraception (Foundations)</span>
-                  </a>
+                  </div>
                   <a
                     class="navlink lesson-planner-link"
-                    href="Lessons/07_Abstinence and Contraception Foundations/07_Abstinence_and_Contraception_Foundations_corrected.html"
+                    href="Lessons/03_Adolescence and Puberty/03_Adolescence_and_Puberty_Lesson_Planner.html"
+                    target="contentFrame"
+                    data-title="Lesson 3 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                  <a class="navlink lesson-plan-link" href="Lessons/03_Adolescence and Puberty/03_Adolescence_and_Puberty_Lesson_Plan.html" target="contentFrame" data-title="Lesson 3 Lesson Plan">
+                    Lesson Plan
+                  </a>
+                  <div class="lesson-menu-heading">
+                    <span class="node-title">Lesson 4 • Female Reproductive System</span>
+                  </div>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/04_Female Reproductive System/04_Female_Reproductive_System_Lesson_Planner.html"
+                    target="contentFrame"
+                    data-title="Lesson 4 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                  <a
+                    class="navlink lesson-plan-link"
+                    href="Lessons/04_Female Reproductive System/04_Female_Reproductive_System_Lesson_Plan.html"
+                    target="contentFrame"
+                    data-title="Lesson 4 Lesson Plan"
+                  >
+                    Lesson Plan
+                  </a>
+                  <div class="lesson-menu-heading">
+                    <span class="node-title">Lesson 5 • Male Reproductive System</span>
+                  </div>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/05_Male Reproductive System/05_Male_Reproductive_System_Lesson_Planner.html"
+                    target="contentFrame"
+                    data-title="Lesson 5 Lesson Planner"
+                  >
+                    Lesson Planner
+                  </a>
+                  <a class="navlink lesson-plan-link" href="Lessons/05_Male Reproductive System/05_Male_Reproductive_System_Lesson_Plan.html" target="contentFrame" data-title="Lesson 5 Lesson Plan">
+                    Lesson Plan
+                  </a>
+                  <div class="lesson-menu-heading">
+                    <span class="node-title">Lesson 6 • Abstinence</span>
+                  </div>
+                  <a class="navlink lesson-planner-link" href="Lessons/06_Abstinence/06_Abstinence_Lesson_Planner.html" target="contentFrame" data-title="Lesson 6 Lesson Planner">Lesson Planner</a>
+                  <a class="navlink lesson-plan-link" href="Lessons/06_Abstinence/06_Abstinence_Lesson_Plan.html" target="contentFrame" data-title="Lesson 6 Lesson Plan">Lesson Plan</a>
+                  <div class="lesson-menu-heading">
+                    <span class="node-title">Lesson 7 • Abstinence and Contraception (Foundations)</span>
+                  </div>
+                  <a
+                    class="navlink lesson-planner-link"
+                    href="Lessons/07_Abstinence and Contraception Foundations/07_Abstinence_and_Contraception_Foundations_Lesson_Planner.html"
                     target="contentFrame"
                     data-title="Lesson 7 Lesson Planner"
                   >
                     Lesson Planner
                   </a>
                   <a
-                    class="navlink lesson-menu-item"
-                    href="Lessons/08_Conception and Pregnancy Foundations/08_Conception_and_Pregnancy_Foundations.html"
+                    class="navlink lesson-plan-link"
+                    href="Lessons/07_Abstinence and Contraception Foundations/07_Abstinence_and_Contraception_Foundations__Lesson_Plan.html"
                     target="contentFrame"
-                    data-title="Lesson 8 • Concept and Pregnancy (Foundations)"
+                    data-title="Lesson 7 Lesson Plan"
                   >
-                    <span class="node-title">Lesson 8 • Concept and Pregnancy (Foundations)</span>
+                    Lesson Plan
                   </a>
+                  <div class="lesson-menu-heading">
+                    <span class="node-title">Lesson 8 • Conception and Pregnancy (Foundations)</span>
+                  </div>
                   <a
                     class="navlink lesson-planner-link"
-                    href="Lessons/08_Conception and Pregnancy Foundations/08_Conception_and_Pregnancy_Foundations.html"
+                    href="Lessons/08_Conception and Pregnancy Foundations/08_Conception_and_Pregnancy_Foundations_Lesson_Planner.html"
                     target="contentFrame"
                     data-title="Lesson 8 Lesson Planner"
                   >
                     Lesson Planner
                   </a>
                   <a
-                    class="navlink lesson-menu-item"
-                    href="Lessons/09_Sexually Transmitted Infections/09_Sexually_Transmitted_Diseases_Infections.html"
+                    class="navlink lesson-plan-link"
+                    href="Lessons/08_Conception and Pregnancy Foundations/08_Conception_and_Pregnancy_Foundations_Lesson_Plan.html"
                     target="contentFrame"
-                    data-title="Lesson 9 • Sexually Transmitted Infections"
+                    data-title="Lesson 8 Lesson Plan"
                   >
-                    <span class="node-title">Lesson 9 • Sexually Transmitted Infections</span>
+                    Lesson Plan
                   </a>
+                  <div class="lesson-menu-heading">
+                    <span class="node-title">Lesson 9 • Sexually Transmitted Infections</span>
+                  </div>
                   <a
                     class="navlink lesson-planner-link"
-                    href="Lessons/09_Sexually Transmitted Infections/09_Sexually_Transmitted_Diseases_Infections.html"
+                    href="Lessons/09_Sexually Transmitted Infections/09_Sexually_Transmitted_Diseases_Infections_Lesson_Planner.html"
                     target="contentFrame"
                     data-title="Lesson 9 Lesson Planner"
                   >
                     Lesson Planner
+                  </a>
+                  <a
+                    class="navlink lesson-plan-link"
+                    href="Lessons/09_Sexually Transmitted Infections/09_Sexually_Transmitted_Diseases_Infections_Lesson_Plan.html"
+                    target="contentFrame"
+                    data-title="Lesson 9 Lesson Plan"
+                  >
+                    Lesson Plan
                   </a>
                 </div>
               </div>
